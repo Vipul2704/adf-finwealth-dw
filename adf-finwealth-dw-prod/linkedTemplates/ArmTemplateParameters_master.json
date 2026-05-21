@@ -1,0 +1,30 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adf-finwealth-dw-prod"
+		},
+		"ls_blob_finwealth_raw_connectionString": {
+			"value": ""
+		},
+		"ls_keyvault_finwealth_properties_typeProperties_baseUrl": {
+			"value": "https://kv-finwealth-dw-prod.vault.azure.net/"
+		},
+		"ls_sql_finwealth_dwh_properties_typeProperties_server": {
+			"value": "sql-finwealth-dw-prod.database.windows.net"
+		},
+		"ls_sql_finwealth_dwh_properties_typeProperties_database": {
+			"value": "sqldb-finwealth-dw"
+		},
+		"ls_sql_finwealth_dwh_properties_typeProperties_userName": {
+			"value": "sqladmin"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

@@ -1,0 +1,23 @@
+{
+	"name": "ls_sql_finwealth_dwh",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "sql-finwealth-dw-prod.database.windows.net",
+			"database": "sqldb-finwealth-dw",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "sqladmin",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "ls_keyvault_finwealth",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "secret-sql-finwealth-password"
+			}
+		}
+	}
+}

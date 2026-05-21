@@ -1,0 +1,39 @@
+{
+	"name": "ds_csv_prices",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_blob_finwealth_raw",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "ds_csv"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Prices.csv",
+				"container": "raw-data"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "SecurityID",
+				"type": "String"
+			},
+			{
+				"name": "PriceDate",
+				"type": "String"
+			},
+			{
+				"name": "ClosePrice",
+				"type": "String"
+			}
+		]
+	}
+}

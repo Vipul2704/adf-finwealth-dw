@@ -1659,20 +1659,6 @@
 				}
 			}
 		],
-		"parameters": {
-			"pipeline_name": {
-				"type": "string",
-				"defaultValue": "pl_ingest_advisors_to_stg"
-			},
-			"source_file": {
-				"type": "string",
-				"defaultValue": "Advisors.csv"
-			},
-			"target_table": {
-				"type": "string",
-				"defaultValue": "stg.stg_advisors"
-			}
-		},
 		"variables": {
 			"rows_copied": {
 				"type": "Integer"

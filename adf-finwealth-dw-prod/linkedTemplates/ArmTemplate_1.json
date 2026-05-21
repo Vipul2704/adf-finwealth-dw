@@ -1,0 +1,285 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adf-finwealth-dw-prod"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_sql_stg_holdings')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_sql_finwealth_dwh",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ds_sql"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "AccountID",
+						"type": "varchar"
+					},
+					{
+						"name": "SecurityID",
+						"type": "varchar"
+					},
+					{
+						"name": "Quantity",
+						"type": "varchar"
+					},
+					{
+						"name": "ValuationDate",
+						"type": "varchar"
+					},
+					{
+						"name": "MarketValue",
+						"type": "varchar"
+					},
+					{
+						"name": "stg_load_timestamp",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					}
+				],
+				"typeProperties": {
+					"schema": "stg",
+					"table": "stg_holdings"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_sql_stg_performance')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_sql_finwealth_dwh",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ds_sql"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "AccountID",
+						"type": "varchar"
+					},
+					{
+						"name": "MonthStart",
+						"type": "varchar"
+					},
+					{
+						"name": "ReturnPct",
+						"type": "varchar"
+					},
+					{
+						"name": "BenchmarkCode",
+						"type": "varchar"
+					},
+					{
+						"name": "BenchmarkReturnPct",
+						"type": "varchar"
+					},
+					{
+						"name": "ExcessReturnPct",
+						"type": "varchar"
+					},
+					{
+						"name": "CumulativeReturnPct",
+						"type": "varchar"
+					},
+					{
+						"name": "stg_load_timestamp",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					}
+				],
+				"typeProperties": {
+					"schema": "stg",
+					"table": "stg_performance"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_sql_stg_prices')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_sql_finwealth_dwh",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ds_sql"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "SecurityID",
+						"type": "varchar"
+					},
+					{
+						"name": "PriceDate",
+						"type": "varchar"
+					},
+					{
+						"name": "ClosePrice",
+						"type": "varchar"
+					},
+					{
+						"name": "stg_load_timestamp",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					}
+				],
+				"typeProperties": {
+					"schema": "stg",
+					"table": "stg_prices"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_sql_stg_securities')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_sql_finwealth_dwh",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ds_sql"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "SecurityID",
+						"type": "varchar"
+					},
+					{
+						"name": "Ticker",
+						"type": "varchar"
+					},
+					{
+						"name": "SecurityName",
+						"type": "varchar"
+					},
+					{
+						"name": "AssetClass",
+						"type": "varchar"
+					},
+					{
+						"name": "Sector",
+						"type": "varchar"
+					},
+					{
+						"name": "Currency",
+						"type": "varchar"
+					},
+					{
+						"name": "Region",
+						"type": "varchar"
+					},
+					{
+						"name": "stg_load_timestamp",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					}
+				],
+				"typeProperties": {
+					"schema": "stg",
+					"table": "stg_securities"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_sql_stg_trades')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_sql_finwealth_dwh",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ds_sql"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "TradeID",
+						"type": "varchar"
+					},
+					{
+						"name": "AccountID",
+						"type": "varchar"
+					},
+					{
+						"name": "SecurityID",
+						"type": "varchar"
+					},
+					{
+						"name": "TradeDate",
+						"type": "varchar"
+					},
+					{
+						"name": "SettleDate",
+						"type": "varchar"
+					},
+					{
+						"name": "Side",
+						"type": "varchar"
+					},
+					{
+						"name": "Price",
+						"type": "varchar"
+					},
+					{
+						"name": "Quantity",
+						"type": "varchar"
+					},
+					{
+						"name": "Amount",
+						"type": "varchar"
+					},
+					{
+						"name": "stg_load_timestamp",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					}
+				],
+				"typeProperties": {
+					"schema": "stg",
+					"table": "stg_trades"
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}

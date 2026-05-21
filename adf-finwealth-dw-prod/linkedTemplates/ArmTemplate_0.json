@@ -693,6 +693,324 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/ls_keyvault_finwealth')]"
 			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_sql_stg_accounts')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_sql_finwealth_dwh",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ds_sql"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "AccountID",
+						"type": "varchar"
+					},
+					{
+						"name": "ClientID",
+						"type": "varchar"
+					},
+					{
+						"name": "AccountType",
+						"type": "varchar"
+					},
+					{
+						"name": "OpenDate",
+						"type": "varchar"
+					},
+					{
+						"name": "BaseCurrency",
+						"type": "varchar"
+					},
+					{
+						"name": "Status",
+						"type": "varchar"
+					},
+					{
+						"name": "stg_load_timestamp",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					}
+				],
+				"typeProperties": {
+					"schema": "stg",
+					"table": "stg_accounts"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_sql_finwealth_dwh')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_sql_stg_advisors')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_sql_finwealth_dwh",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ds_sql"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "AdvisorID",
+						"type": "varchar"
+					},
+					{
+						"name": "AdvisorName",
+						"type": "varchar"
+					},
+					{
+						"name": "Region",
+						"type": "varchar"
+					},
+					{
+						"name": "JoinDate",
+						"type": "varchar"
+					},
+					{
+						"name": "ExperienceYears",
+						"type": "varchar"
+					},
+					{
+						"name": "stg_load_timestamp",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					}
+				],
+				"typeProperties": {
+					"schema": "stg",
+					"table": "stg_advisors"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_sql_finwealth_dwh')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_sql_stg_benchmarks')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_sql_finwealth_dwh",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ds_sql"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "BenchmarkCode",
+						"type": "varchar"
+					},
+					{
+						"name": "Description",
+						"type": "varchar"
+					},
+					{
+						"name": "Currency",
+						"type": "varchar"
+					},
+					{
+						"name": "IndexValueDate",
+						"type": "varchar"
+					},
+					{
+						"name": "IndexValue",
+						"type": "varchar"
+					},
+					{
+						"name": "stg_load_timestamp",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					}
+				],
+				"typeProperties": {
+					"schema": "stg",
+					"table": "stg_benchmarks"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_sql_finwealth_dwh')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_sql_stg_cashflows')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_sql_finwealth_dwh",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ds_sql"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "CashflowID",
+						"type": "varchar"
+					},
+					{
+						"name": "AccountID",
+						"type": "varchar"
+					},
+					{
+						"name": "CashflowDate",
+						"type": "varchar"
+					},
+					{
+						"name": "Type",
+						"type": "varchar"
+					},
+					{
+						"name": "Amount",
+						"type": "varchar"
+					},
+					{
+						"name": "stg_load_timestamp",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					}
+				],
+				"typeProperties": {
+					"schema": "stg",
+					"table": "stg_cashflows"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_sql_finwealth_dwh')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_sql_stg_clients')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_sql_finwealth_dwh",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ds_sql"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "ClientID",
+						"type": "varchar"
+					},
+					{
+						"name": "ClientName",
+						"type": "varchar"
+					},
+					{
+						"name": "Segment",
+						"type": "varchar"
+					},
+					{
+						"name": "RiskProfile",
+						"type": "varchar"
+					},
+					{
+						"name": "PrimaryAdvisorID",
+						"type": "varchar"
+					},
+					{
+						"name": "ClientSince",
+						"type": "varchar"
+					},
+					{
+						"name": "Country",
+						"type": "varchar"
+					},
+					{
+						"name": "stg_load_timestamp",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					}
+				],
+				"typeProperties": {
+					"schema": "stg",
+					"table": "stg_clients"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_sql_finwealth_dwh')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_sql_stg_fees')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_sql_finwealth_dwh",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ds_sql"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "FeeID",
+						"type": "varchar"
+					},
+					{
+						"name": "AccountID",
+						"type": "varchar"
+					},
+					{
+						"name": "FeeDate",
+						"type": "varchar"
+					},
+					{
+						"name": "FeeType",
+						"type": "varchar"
+					},
+					{
+						"name": "Amount",
+						"type": "varchar"
+					},
+					{
+						"name": "stg_load_timestamp",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					}
+				],
+				"typeProperties": {
+					"schema": "stg",
+					"table": "stg_fees"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_sql_finwealth_dwh')]"
+			]
 		}
 	]
 }

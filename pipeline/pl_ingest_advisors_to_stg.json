@@ -368,13 +368,6 @@
 									"type": "String",
 									"physicalType": "varchar"
 								}
-							},
-							{
-								"sink": {
-									"name": "stg_load_timestamp",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								}
 							}
 						],
 						"typeConversion": true,

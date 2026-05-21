@@ -13,6 +13,55 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/ds_sql_stg_fees')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_sql_finwealth_dwh",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ds_sql"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "FeeID",
+						"type": "varchar"
+					},
+					{
+						"name": "AccountID",
+						"type": "varchar"
+					},
+					{
+						"name": "FeeDate",
+						"type": "varchar"
+					},
+					{
+						"name": "FeeType",
+						"type": "varchar"
+					},
+					{
+						"name": "Amount",
+						"type": "varchar"
+					},
+					{
+						"name": "stg_load_timestamp",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					}
+				],
+				"typeProperties": {
+					"schema": "stg",
+					"table": "stg_fees"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/ds_sql_stg_holdings')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -1969,20 +2018,6 @@
 				"policy": {
 					"elapsedTimeMetric": {}
 				},
-				"parameters": {
-					"pipeline_name": {
-						"type": "string",
-						"defaultValue": "pl_ingest_advisors_to_stg"
-					},
-					"source_file": {
-						"type": "string",
-						"defaultValue": "Advisors.csv"
-					},
-					"target_table": {
-						"type": "string",
-						"defaultValue": "stg.stg_advisors"
-					}
-				},
 				"variables": {
 					"rows_copied": {
 						"type": "Integer"
@@ -1998,6 +2033,7 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/ds_sql_stg_securities')]",
+				"[concat(variables('factoryId'), '/datasets/ds_sql_stg_fees')]",
 				"[concat(variables('factoryId'), '/datasets/ds_sql_stg_holdings')]",
 				"[concat(variables('factoryId'), '/datasets/ds_sql_stg_performance')]",
 				"[concat(variables('factoryId'), '/datasets/ds_sql_stg_prices')]",

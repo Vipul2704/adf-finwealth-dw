@@ -223,13 +223,6 @@
 									"type": "String",
 									"physicalType": "varchar"
 								}
-							},
-							{
-								"sink": {
-									"name": "stg_load_timestamp",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								}
 							}
 						],
 						"typeConversion": true,
@@ -515,13 +508,6 @@
 									"type": "String",
 									"physicalType": "varchar"
 								}
-							},
-							{
-								"sink": {
-									"name": "stg_load_timestamp",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								}
 							}
 						],
 						"typeConversion": true,
@@ -667,13 +653,6 @@
 									"type": "String",
 									"physicalType": "varchar"
 								}
-							},
-							{
-								"sink": {
-									"name": "stg_load_timestamp",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								}
 							}
 						],
 						"typeConversion": true,
@@ -794,13 +773,6 @@
 									"name": "IndexValue",
 									"type": "String",
 									"physicalType": "varchar"
-								}
-							},
-							{
-								"sink": {
-									"name": "stg_load_timestamp",
-									"type": "DateTime",
-									"physicalType": "datetime"
 								}
 							}
 						],
@@ -923,13 +895,6 @@
 									"type": "String",
 									"physicalType": "varchar"
 								}
-							},
-							{
-								"sink": {
-									"name": "stg_load_timestamp",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								}
 							}
 						],
 						"typeConversion": true,
@@ -1051,13 +1016,6 @@
 									"type": "String",
 									"physicalType": "varchar"
 								}
-							},
-							{
-								"sink": {
-									"name": "stg_load_timestamp",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								}
 							}
 						],
 						"typeConversion": true,
@@ -1178,13 +1136,6 @@
 									"name": "MarketValue",
 									"type": "String",
 									"physicalType": "varchar"
-								}
-							},
-							{
-								"sink": {
-									"name": "stg_load_timestamp",
-									"type": "DateTime",
-									"physicalType": "datetime"
 								}
 							}
 						],
@@ -1331,13 +1282,6 @@
 									"type": "String",
 									"physicalType": "varchar"
 								}
-							},
-							{
-								"sink": {
-									"name": "stg_load_timestamp",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								}
 							}
 						],
 						"typeConversion": true,
@@ -1434,13 +1378,6 @@
 									"name": "ClosePrice",
 									"type": "String",
 									"physicalType": "varchar"
-								}
-							},
-							{
-								"sink": {
-									"name": "stg_load_timestamp",
-									"type": "DateTime",
-									"physicalType": "datetime"
 								}
 							}
 						],
@@ -1610,13 +1547,6 @@
 									"name": "Amount",
 									"type": "String",
 									"physicalType": "varchar"
-								}
-							},
-							{
-								"sink": {
-									"name": "stg_load_timestamp",
-									"type": "DateTime",
-									"physicalType": "datetime"
 								}
 							}
 						],

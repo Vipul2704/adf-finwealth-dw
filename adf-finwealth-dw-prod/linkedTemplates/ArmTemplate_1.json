@@ -2002,7 +2002,8 @@
 							"storedProcedureName": "[[dbo].[usp_log_ingest_summary]",
 							"storedProcedureParameters": {
 								"status": {
-									"value": "FAILED"
+									"value": "FAILED",
+									"type": "String"
 								},
 								"error_message": {
 									"value": "One or more copy activities failed"
@@ -2038,6 +2039,66 @@
 				"[concat(variables('factoryId'), '/datasets/ds_sql_stg_performance')]",
 				"[concat(variables('factoryId'), '/datasets/ds_sql_stg_prices')]",
 				"[concat(variables('factoryId'), '/datasets/ds_sql_stg_trades')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pl_master')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "exec_pl_ingest_all_csv_to_stg",
+						"type": "ExecutePipeline",
+						"dependsOn": [],
+						"policy": {
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "pl_ingest_advisors_to_stg",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {}
+						}
+					},
+					{
+						"name": "exec_pl_transform_stg_to_dwh",
+						"type": "ExecutePipeline",
+						"dependsOn": [
+							{
+								"activity": "exec_pl_ingest_all_csv_to_stg",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "pl_transform_stg_to_dwh",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"folder": {
+					"name": "master"
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/pl_ingest_advisors_to_stg')]"
 			]
 		}
 	]

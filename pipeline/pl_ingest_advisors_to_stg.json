@@ -1646,7 +1646,8 @@
 					"storedProcedureName": "[dbo].[usp_log_ingest_summary]",
 					"storedProcedureParameters": {
 						"status": {
-							"value": "FAILED"
+							"value": "FAILED",
+							"type": "String"
 						},
 						"error_message": {
 							"value": "One or more copy activities failed"
